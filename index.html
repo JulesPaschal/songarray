@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <link rel = 'stylesheet' href = 'songstyel2.css' />
+<title>Song List 2</title>
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+
+<body>
+ 
+    <script = javascript>
+    $.get("https://juliathehobbit.github.io/songlist2/", function(data){
+        var x = document.getElementsByTagName("tr");
+        var body = document.getElementsByTagName("body")[0];
+        var songTable = document.createElement("table");
+        var songBody = document.createElement("tbody");
+
+        // Create column titles first
+        var row = document.createElement("tr");
+        var cell = document.createElement("th");
+        var cellTxt = document.createTextNode("Title")
+        cell.appendChild(cellTxt);
+        row.appendChild(cell)
+        var cell = document.createElement("th");
+        var cellTxt = document.createTextNode("Artist")
+        cell.appendChild(cellTxt);
+        row.appendChild(cell)
+        var cell = document.createElement("th");
+        var cellTxt = document.createTextNode("Genre")
+        cell.appendChild(cellTxt);
+        row.appendChild(cell)
+        var cell = document.createElement("th");
+        var cellTxt = document.createTextNode("Year")
+        cell.appendChild(cellTxt);
+        row.appendChild(cell);
+        songBody.appendChild(row);
+
+        // add each songs information 
+        for (var i = 0; i < 14; i++) {
+            var row = document.createElement("tr");
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode(data[i]["Title"]);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode(data[i]["Artist"]);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode(data[i]["Genre"]);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+            var cell = document.createElement("td");
+            var cellText = document.createTextNode(data[i]["Year"]);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+            songBody.appendChild(row);
+
+        }
+        songTable.appendChild(songBody);
+        body.appendChild(songTable);
+        songTable.setAttribute("border", "2");
+
+    });
+    </script>
+
+
+</body>
